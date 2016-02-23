@@ -31,3 +31,8 @@ for i=1:size(aucPRC,1)
     end
 end
 fclose(combinedAuc);
+
+if ismac
+    generateHeatmapString = ['run folowing command in terminal>>> python generateHeatmap.py -in "combinedAUC.csv" -t "AUC Heatmap of Varying Model Dimensions fixed with nOctup ', workingNOctUp{1},' and treeDepth ', workingTreeDepth{1} ,'"' ];
+    disp(generateHeatmapString);
+end

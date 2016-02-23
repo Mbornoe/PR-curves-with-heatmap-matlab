@@ -6,8 +6,8 @@ import numpy as np
 import scipy
 from sklearn import metrics
 
-def genereateHeatMap(combinedAucFilePath):
-    inputFile = open(combinedAucFilePath, 'r')
+def genereateHeatMap(localArgs):
+    inputFile = open(localArgs.input, 'r')
     data = np.zeros((26,26))
     header = inputFile.readline()
     for line in inputFile:
@@ -16,7 +16,7 @@ def genereateHeatMap(combinedAucFilePath):
         modelDsY = int(lineSplit[1])
         foundAUC = float(lineSplit[2])
         print "modelDsX: %s modelDsY: %s AUC: %s" % (modelDsX,modelDsY,foundAUC)
-        data[ (modelDsY) , (modelDsX) ] = foundAUC
+        data[ (modelDsY) , (modelDsX) ] = foundAUC * 100
 
     #data = np.random.rand(4, 4)
     fig, ax = plt.subplots()
@@ -64,17 +64,19 @@ def genereateHeatMap(combinedAucFilePath):
     fig.set_size_inches(18.5, 10.5)
     plt.xlabel('Model Dimension X-Size',fontsize=18)
     plt.ylabel('Model Dimension Y-Size',fontsize=18)
-    plt.title('Area-Under-Curve Heatmap of Varying Model Dimensions for ACF Detector',fontsize=24)
+
+    plt.title(args.title,fontsize=24)
     plt.savefig("heatMapPlot.png", dpi=300)
     plt.show()
 
 def main(args):
 
-    genereateHeatMap(args.input)
+    genereateHeatMap(args)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Generate heatmap based on input file', epilog='This program will generate a heatmap based on results from an inputfile. The input file most have syntax: ModelDsX;ModelDsY;foundAUC ')
-    parser.add_argument('-in','--input', metavar='combinedAUC.csv', type=str, action='append', help='Path to the csv file containing the results.')
+    parser.add_argument('-in','--input', default='combinedAUC.csv', metavar='combinedAUC.csv', type=str, help='Path to the csv file containing the results.')
+    parser.add_argument('-t','--title', default='Area-Under-Curve Heatmap of Varying Model Dimensions',metavar='Area-Under-Curve Heatmap of Varying Model Dimensions', type=str, help='Title on the plot.')
     args = parser.parse_args()
     main(args)
