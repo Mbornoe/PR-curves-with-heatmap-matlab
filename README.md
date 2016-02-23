@@ -5,6 +5,7 @@ All code are optimized towards using multiple workers in matlab.
 
 # Usage
 The generateHeatmap.m is the main function, which are used for generating a heatmap based on multiple detections result found in folder "outputResults/". The syntax for the subfolder naming is: modelDS[15,16]-nOctUp[2]-treeDepth[4], where the modelDS parameters can be changed to create the heatmap.
+Note: You have to create the outPutfolder and annotations folder yourself.
 
 ## Ground truth file syntax
 Filename;Annotation tag;Upper left corner X;Upper left corner Y;Lower right corner X;Lower right corner Y;Origin file;Origin frame number;Origin track;Origin track frame number
