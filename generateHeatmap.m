@@ -3,6 +3,8 @@ listing = dir(outputResultsPath);
 gtFilePath = 'annotations/nightSeq1/';
 pascalVar = 0.5;
 system('python findDirsOfInterest.py');
+checkDirectories();
+
 
 aucPRC = ones(size(listing,1),5).*-1;
 for i=1:size(listing,1)
