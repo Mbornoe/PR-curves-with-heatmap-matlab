@@ -2,3 +2,6 @@
 annotations/nightSeq1/GTarray.mat
 outputResults/
 annotations/
+temporaryFiles/
+
+aucPRC.mat

@@ -20,7 +20,7 @@ workingTreeDepth = digitsInDtRootPathname(4);
 tpNaming = 1;
 fpNaming = 0;
 fnNaming = 'NaN';
-
+gtFilePathname
 gtArray = fetchGT(gtFilePathname);
 dtArray = fetchDT(dtFilePathname);
 
