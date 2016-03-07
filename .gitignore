@@ -5,3 +5,5 @@ annotations/
 temporaryFiles/
 
 aucPRC.mat
+
+combinedAUC.csv
